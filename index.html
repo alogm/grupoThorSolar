@@ -45,17 +45,9 @@
     }
 
     @keyframes pulse-green {
-      0% {
-        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
-      }
-
-      70% {
-        box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
-      }
-
-      100% {
-        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
-      }
+      0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+      70% { box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
     }
 
     .scrolled {
@@ -83,12 +75,15 @@
       min-width: 100%;
       position: relative;
       height: 100%;
+      /* CAMBIO: Fondo oscuro para rellenar espacios si la imagen no llena todo */
+      background-color: #1e293b; 
     }
 
     .carousel-slide img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      /* CAMBIO IMPORTANTE: 'contain' muestra toda la imagen sin recortar nada */
+      object-fit: contain; 
     }
 
     /* Estilos Tarjetas Pequeñas */
@@ -147,13 +142,8 @@
     }
 
     @keyframes scroll {
-      0% {
-        transform: translateX(0);
-      }
-
-      100% {
-        transform: translateX(-50%);
-      }
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
     }
 
     .animate-scroll {
@@ -381,7 +371,7 @@
 
         <div class="lg:col-span-5 flex flex-col gap-6 h-full justify-center mt-10 lg:mt-0">
 
-          <div class="carousel-container h-56 shadow-xl border-4 border-white bg-gray-200" id="carousel-1">
+          <div class="carousel-container h-72 shadow-xl border-4 border-white bg-gray-200" id="carousel-1">
             <div class="carousel-track">
               <div class="carousel-slide"><img src="/imagen/calentador.jpg" alt="Instalación 1">
                 <div class="absolute bottom-0 w-full bg-black/60 text-white text-xs p-2 text-center font-bold">
@@ -408,7 +398,7 @@
               </svg></button>
           </div>
 
-          <div class="carousel-container h-56 shadow-xl border-4 border-white bg-gray-200" id="carousel-2">
+          <div class="carousel-container h-72 shadow-xl border-4 border-white bg-gray-200" id="carousel-2">
             <div class="carousel-track">
               <div class="carousel-slide"><img src="/imagen/calentador_solar.jpeg" alt="Tech 1">
                 <div class="absolute bottom-0 w-full bg-thor-blue/80 text-white text-xs p-2 text-center font-bold">
@@ -435,7 +425,7 @@
               </svg></button>
           </div>
 
-          <div class="carousel-container h-56 shadow-xl border-4 border-white bg-gray-200" id="carousel-3">
+          <div class="carousel-container h-72 shadow-xl border-4 border-white bg-gray-200" id="carousel-3">
             <div class="carousel-track">
               <div class="carousel-slide"><img src="/imagen/celda.jpeg" alt="Lifestyle 1">
                 <div class="absolute bottom-0 w-full bg-thor-gold/90 text-thor-dark text-xs p-2 text-center font-bold">
@@ -561,7 +551,7 @@
                 </div>
                 <input type="range" id="lampRange" min="1" max="100" step="1" value="10"
                   class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-white"
-                  oninput="document.getElementById('lampInput').value=this.value; calculateLights();" />
+                  oninput="document.getElementById('lampInput').value=this.value; calculateLights()" />
               </div>
               <div class="mb-4">
                 <label class="block text-gray-400 text-sm font-bold mb-2 uppercase">Reemplazando a:</label>
