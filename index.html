@@ -18,7 +18,7 @@
         extend: {
           colors: {
             thor: {
-              dark: "#0f172a",
+              dark: "rgb(35, 105, 157)",
               card: "#1e293b",
               blue: "#3b82f6",
               cyan: "#06b6d4",
@@ -36,13 +36,26 @@
   </script>
 
   <style>
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
-    .whatsapp-float { animation: pulse-green 2s infinite; }
+    .whatsapp-float {
+      animation: pulse-green 2s infinite;
+    }
+
     @keyframes pulse-green {
-      0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-      70% { box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+      0% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+      }
+
+      70% {
+        box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
+      }
+
+      100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+      }
     }
 
     .scrolled {
@@ -53,77 +66,116 @@
       padding-bottom: 10px;
     }
 
-    .product-img { transition: transform 0.5s ease; }
-    .product-container:hover .product-img { transform: scale(1.03); }
-    
-    .calc-tab {
-        transition: all 0.3s ease;
-        opacity: 0.5;
-        border-bottom: 2px solid transparent;
+    /* Estilos para los Multi-Carruseles */
+    .carousel-container {
+      position: relative;
+      overflow: hidden;
+      border-radius: 1rem;
     }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      height: 100%;
+    }
+
+    .carousel-slide {
+      min-width: 100%;
+      position: relative;
+      height: 100%;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Estilos Tarjetas Pequeñas */
+    .mini-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .mini-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+
+    /* Calc Tabs */
+    .calc-tab {
+      transition: all 0.3s ease;
+      opacity: 0.5;
+      border-bottom: 2px solid transparent;
+    }
+
     .calc-tab.active {
-        opacity: 1;
-        color: #fbbf24;
-        border-bottom: 2px solid #fbbf24;
-        background: rgba(255,255,255,0.05);
+      opacity: 1;
+      color: #fbbf24;
+      border-bottom: 2px solid #fbbf24;
+      background: rgba(255, 255, 255, 0.05);
     }
 
     input[type=range] {
-        -webkit-appearance: none; 
-        background: transparent; 
+      -webkit-appearance: none;
+      background: transparent;
     }
+
     input[type=range]::-webkit-slider-thumb {
-        -webkit-appearance: none;
-        height: 20px;
-        width: 20px;
-        border-radius: 50%;
-        background: #fbbf24;
-        cursor: pointer;
-        margin-top: -8px; 
-        box-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+      -webkit-appearance: none;
+      height: 20px;
+      width: 20px;
+      border-radius: 50%;
+      background: #fbbf24;
+      cursor: pointer;
+      margin-top: -8px;
+      box-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
     }
+
     input[type=range]::-webkit-slider-runnable-track {
-        width: 100%;
-        height: 4px;
-        cursor: pointer;
-        background: #475569;
-        border-radius: 2px;
+      width: 100%;
+      height: 4px;
+      cursor: pointer;
+      background: #475569;
+      border-radius: 2px;
     }
-    
-    .app-card {
-        position: relative;
-        overflow: hidden;
-        border-radius: 0.5rem;
-        cursor: pointer;
-        transition: all 0.3s ease;
+
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
     }
-    .app-card:hover { transform: scale(1.02); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
-    .app-overlay {
-        background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.2));
-        transition: background 0.3s ease;
-    }
-    .app-card:hover .app-overlay { background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.4)); }
-    
-    input[type=number]::-webkit-inner-spin-button, 
-    input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
 
     @keyframes scroll {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(-50%); }
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
     }
-    .animate-scroll { display: flex; width: fit-content; animation: scroll 30s linear infinite; }
-    .animate-scroll:hover { animation-play-state: paused; }
-    .mask-fade { mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); }
+
+    .animate-scroll {
+      display: flex;
+      width: fit-content;
+      animation: scroll 30s linear infinite;
+    }
+
+    .mask-fade {
+      mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    }
   </style>
 </head>
 
 <body class="font-sans text-gray-700 antialiased bg-gray-50">
-  
-  <a href="https://wa.me/525584122228?text=Hola%20ThorSolar,%20quiero%20información%20general." target="_blank"
-    class="whatsapp-float fixed bottom-6 right-6 z-50 flex items-center justify-center w-16 h-16 bg-[#25D366] rounded-full shadow-2xl hover:bg-[#20ba5a] transition-all duration-300 hover:scale-110 group"
-    aria-label="Contactar por WhatsApp">
+
+  <a href="https://wa.me/525584122228" target="_blank"
+    class="whatsapp-float fixed bottom-6 right-6 z-50 flex items-center justify-center w-16 h-16 bg-[#25D366] rounded-full shadow-2xl hover:bg-[#20ba5a] transition-all duration-300 hover:scale-110 group">
     <svg xmlns="http://www.w3.org/2000/svg" class="w-9 h-9 text-white fill-current" viewBox="0 0 448 512">
-      <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z" />
+      <path
+        d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z" />
     </svg>
   </a>
 
@@ -140,30 +192,48 @@
         </div>
 
         <div class="hidden md:flex space-x-8 items-center">
-          <a href="index.html" class="text-gray-300 hover:text-thor-gold transition font-medium text-sm uppercase tracking-wide">Inicio</a>
-          
+          <a href="index.html"
+            class="text-gray-300 hover:text-thor-gold transition font-medium text-sm uppercase tracking-wide">Inicio</a>
+
           <div class="relative group">
-            <button class="flex items-center gap-1 text-gray-300 group-hover:text-thor-gold transition font-medium text-sm uppercase tracking-wide outline-none">
+            <button
+              class="flex items-center gap-1 text-gray-300 group-hover:text-thor-gold transition font-medium text-sm uppercase tracking-wide outline-none">
               Productos
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform duration-300 group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg"
+                class="h-4 w-4 transition-transform duration-300 group-hover:rotate-180" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
             </button>
-            <div class="absolute left-0 mt-0 w-48 pt-4 invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-300 transform origin-top z-50">
+            <div
+              class="absolute left-0 mt-0 w-48 pt-4 invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-300 transform origin-top z-50">
               <div class="bg-thor-dark border border-gray-700 rounded-xl shadow-2xl overflow-hidden flex flex-col">
-                <a href="productos/calentadores.html" class="px-4 py-3 text-sm text-gray-300 hover:bg-gray-800 hover:text-thor-gold border-b border-gray-800 transition flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-thor-gold"></span> Calentadores</a>
-                <a href="productos/celdas.html" class="px-4 py-3 text-sm text-gray-300 hover:bg-gray-800 hover:text-thor-cyan border-b border-gray-800 transition flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-thor-cyan"></span> Celdas</a>
-                <a href="productos/luminarias.html" class="px-4 py-3 text-sm text-gray-300 hover:bg-gray-800 hover:text-white border-b border-gray-800 transition flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-white"></span> Luminarias</a>
-                <a href="productos/albercas.html" class="px-4 py-3 text-sm text-gray-300 hover:bg-gray-800 hover:text-thor-cyan transition flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-thor-cyan"></span> Albercas</a>
+                <a href="productos/calentadores.html"
+                  class="px-4 py-3 text-sm text-gray-300 hover:bg-gray-800 hover:text-thor-gold border-b border-gray-800 transition flex items-center gap-2"><span
+                    class="w-2 h-2 rounded-full bg-thor-gold"></span> Calentadores</a>
+                <a href="productos/celdas.html"
+                  class="px-4 py-3 text-sm text-gray-300 hover:bg-gray-800 hover:text-thor-cyan border-b border-gray-800 transition flex items-center gap-2"><span
+                    class="w-2 h-2 rounded-full bg-thor-cyan"></span> Celdas</a>
+                <a href="productos/luminarias.html"
+                  class="px-4 py-3 text-sm text-gray-300 hover:bg-gray-800 hover:text-white border-b border-gray-800 transition flex items-center gap-2"><span
+                    class="w-2 h-2 rounded-full bg-white"></span> Luminarias</a>
+                <a href="productos/albercas.html"
+                  class="px-4 py-3 text-sm text-gray-300 hover:bg-gray-800 hover:text-thor-cyan transition flex items-center gap-2"><span
+                    class="w-2 h-2 rounded-full bg-thor-cyan"></span> Albercas</a>
               </div>
             </div>
           </div>
 
-          <a href="mantenimiento.html" class="text-gray-300 hover:text-thor-gold transition font-medium text-sm uppercase tracking-wide">Mantenimiento</a>
-          <a href="nosotros.html" class="text-gray-300 hover:text-thor-gold transition font-medium text-sm uppercase tracking-wide">Nosotros</a>
-          <a href="productos.html" class="text-gray-300 hover:text-thor-gold transition font-medium text-sm uppercase tracking-wide">Productos</a>
-          <a href="ayuda.html" class="text-thor-gold font-bold text-sm uppercase tracking-wide border-b-2 border-thor-gold pb-1">Ayuda</a>
-          <a href="contacto.html" class="text-gray-300 hover:text-thor-gold transition font-medium text-sm uppercase tracking-wide">Contacto</a>
+          <a href="mantenimiento.html"
+            class="text-gray-300 hover:text-thor-gold transition font-medium text-sm uppercase tracking-wide">Mantenimiento</a>
+          <a href="nosotros.html"
+            class="text-gray-300 hover:text-thor-gold transition font-medium text-sm uppercase tracking-wide">Nosotros</a>
+          <a href="productos.html"
+            class="text-gray-300 hover:text-thor-gold transition font-medium text-sm uppercase tracking-wide">Productos</a>
+          <a href="ayuda.html"
+            class="text-thor-gold font-bold text-sm uppercase tracking-wide border-b-2 border-thor-gold pb-1">Ayuda</a>
+          <a href="contacto.html"
+            class="text-gray-300 hover:text-thor-gold transition font-medium text-sm uppercase tracking-wide">Contacto</a>
         </div>
 
         <button id="menu-button" class="md:hidden text-thor-gold hover:text-white transition">
@@ -173,54 +243,216 @@
         </button>
       </div>
     </div>
-    
+
     <div id="mobile-menu" class="hidden md:hidden bg-thor-dark border-t border-gray-800 absolute w-full z-50">
       <div class="px-4 pt-4 pb-6 space-y-2">
-        <a href="index.html" class="block px-3 py-3 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800">Inicio</a>
+        <a href="index.html"
+          class="block px-3 py-3 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800">Inicio</a>
         <div class="space-y-1">
           <div class="px-3 py-2 text-thor-gold font-bold uppercase text-xs tracking-wider opacity-80">Categorías</div>
-          <a href="productos/calentadores.html" class="block pl-6 pr-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-thor-gold hover:bg-gray-800 border-l-2 border-transparent hover:border-thor-gold transition">• Calentadores</a>
-          <a href="productos/celdas.html" class="block pl-6 pr-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-thor-cyan hover:bg-gray-800 border-l-2 border-transparent hover:border-thor-cyan transition">• Celdas</a>
-          <a href="productos/luminarias.html" class="block pl-6 pr-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-800 border-l-2 border-transparent hover:border-white transition">• Luminarias</a>
-          <a href="productos/albercas.html" class="block pl-6 pr-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-800 border-l-2 border-transparent hover:border-white transition">• Albercas</a>
+          <a href="productos/calentadores.html"
+            class="block pl-6 pr-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-thor-gold hover:bg-gray-800">•
+            Calentadores</a>
+          <a href="productos/celdas.html"
+            class="block pl-6 pr-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-thor-cyan hover:bg-gray-800">•
+            Celdas</a>
+          <a href="productos/luminarias.html"
+            class="block pl-6 pr-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-800">•
+            Luminarias</a>
+          <a href="productos/albercas.html"
+            class="block pl-6 pr-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-800">•
+            Albercas</a>
         </div>
-        <a href="mantenimiento.html" class="block px-3 py-3 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800">Mantenimiento</a>
-        <a href="nosotros.html" class="block px-3 py-3 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800">Nosotros</a>
-        <a href="productos.html" class="block px-3 py-3 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800">Productos</a>
-        <a href="ayuda.html" class="block px-3 py-3 rounded-md text-base font-medium text-thor-gold bg-gray-900">Ayuda</a>
-        <a href="contacto.html" class="block px-3 py-3 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800">Contacto</a>
+        <a href="mantenimiento.html"
+          class="block px-3 py-3 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800">Mantenimiento</a>
+        <a href="nosotros.html"
+          class="block px-3 py-3 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800">Nosotros</a>
+        <a href="productos.html"
+          class="block px-3 py-3 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800">Productos</a>
+        <a href="ayuda.html"
+          class="block px-3 py-3 rounded-md text-base font-medium text-thor-gold bg-gray-900">Ayuda</a>
+        <a href="contacto.html"
+          class="block px-3 py-3 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800">Contacto</a>
       </div>
     </div>
   </nav>
 
   <main>
-    <section id="home" class="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden bg-gray-50 min-h-screen flex items-center">
-      <div class="absolute inset-0 opacity-5">
+    <section id="home" class="relative pt-10 pb-20 lg:pt-16 lg:pb-24 overflow-hidden bg-gray-50 min-h-screen">
+      <div class="absolute inset-0 opacity-5 pointer-events-none">
         <svg class="h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none">
           <path d="M0 100 L100 0 L100 100 Z" fill="#1e3a8a" />
         </svg>
       </div>
 
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid lg:grid-cols-2 gap-12 items-center">
-        <div class="text-center lg:text-left">
-          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-display font-black text-thor-dark mb-6 leading-tight">
-            El <span class="text-transparent bg-clip-text bg-gradient-to-r from-thor-goldDark to-thor-gold">calor de hogar</span><br />
-            que tu familia merece.
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid lg:grid-cols-12 gap-8 lg:gap-12">
+
+        <div class="lg:col-span-7 flex flex-col justify-center">
+
+          <h1 class="text-4xl sm:text-5xl lg:text-5xl font-display font-black text-thor-dark mb-4 leading-tight">
+            En <span
+              class="text-transparent bg-clip-text bg-gradient-to-r from-thor-goldDark to-thor-gold">ThorSolar</span><br />
+            te ofrecemos los mejores sistemas de energía.
           </h1>
-          <p class="mt-4 text-xl text-gray-600 font-medium leading-relaxed">
-            Olvídate de gastar en gas. Disfruta de agua caliente y electricidad gratis gracias al sol.
-          </p>
-          <div class="mt-10 flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
-            <a href="./productos.html" class="px-8 py-4 rounded-xl bg-thor-gold hover:bg-yellow-400 text-thor-dark font-bold text-lg shadow-xl shadow-yellow-200 transition transform hover:scale-105 text-center">Ver Productos</a>
-            <a href="contacto.html" class="px-8 py-4 rounded-xl border-2 border-thor-cyan text-thor-cyan font-bold text-lg hover:bg-thor-cyan hover:text-white transition duration-300 text-center">Contáctanos</a>
+
+          <div class="mt-4 mb-10 flex flex-wrap gap-4">
+            <a href="./productos.html"
+              class="px-6 py-3 rounded-xl bg-thor-gold hover:bg-yellow-400 text-thor-dark font-bold shadow-lg transition transform hover:scale-105">Ver
+              Productos</a>
+            <a href="contacto.html"
+              class="px-6 py-3 rounded-xl border-2 border-thor-cyan text-thor-cyan font-bold hover:bg-thor-cyan hover:text-white transition">Contáctanos</a>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4">
+
+            <div class="mini-card relative h-40 rounded-2xl overflow-hidden group"
+              onclick="window.location.href='./productos/calentadores.html'">
+              <img
+                src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80"
+                class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+              <div class="absolute inset-0 bg-black/50 hover:bg-black/40 transition flex items-center justify-center">
+                <h3 class="text-white font-bold text-xl drop-shadow-md">Residencial</h3>
+                <div
+                  class="absolute bottom-2 right-4 opacity-0 group-hover:opacity-100 transition text-thor-gold text-xs font-bold uppercase">
+                  Ver opciones -></div>
+              </div>
+            </div>
+
+            <div class="mini-card relative h-40 rounded-2xl overflow-hidden group"
+              onclick="window.location.href='./productos/celdas.html'">
+              <img
+                src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80"
+                class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+              <div class="absolute inset-0 bg-black/50 hover:bg-black/40 transition flex items-center justify-center">
+                <h3 class="text-white font-bold text-xl drop-shadow-md">Comercial</h3>
+                <div
+                  class="absolute bottom-2 right-4 opacity-0 group-hover:opacity-100 transition text-thor-cyan text-xs font-bold uppercase">
+                  Ver opciones -></div>
+              </div>
+            </div>
+
+            <div class="mini-card relative h-40 rounded-2xl overflow-hidden group"
+              onclick="window.location.href='./productos/celdas.html'">
+              <img src="../imagen/industry.jpg"
+                onerror="this.src='https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80'"
+                class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+              <div class="absolute inset-0 bg-black/50 hover:bg-black/40 transition flex items-center justify-center">
+                <h3 class="text-white font-bold text-xl drop-shadow-md">Industrial</h3>
+                <div
+                  class="absolute bottom-2 right-4 opacity-0 group-hover:opacity-100 transition text-white text-xs font-bold uppercase">
+                  Ver opciones -></div>
+              </div>
+            </div>
+
+            <div class="mini-card relative h-40 rounded-2xl overflow-hidden group"
+              onclick="window.location.href='./productos/luminarias.html'">
+              <img
+                src="https://images.unsplash.com/photo-1617103996702-96ff29b1c467?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80"
+                class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+              <div class="absolute inset-0 bg-black/50 hover:bg-black/40 transition flex items-center justify-center">
+                <h3 class="text-white font-bold text-xl drop-shadow-md text-center leading-none">Alumbrado<br><span
+                    class="text-sm font-medium">Exterior</span></h3>
+                <div
+                  class="absolute bottom-2 right-4 opacity-0 group-hover:opacity-100 transition text-white text-xs font-bold uppercase">
+                  Ver opciones -></div>
+              </div>
+            </div>
+
+            <div class="mini-card relative h-40 rounded-2xl overflow-hidden group col-span-2"
+              onclick="window.location.href='./productos/calentadores.html'">
+              <img
+                src="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+              <div class="absolute inset-0 bg-black/50 hover:bg-black/40 transition flex items-center justify-center">
+                <h3 class="text-white font-bold text-xl drop-shadow-md">Albercas y Climatización</h3>
+                <div
+                  class="absolute bottom-2 right-4 opacity-0 group-hover:opacity-100 transition text-thor-gold text-xs font-bold uppercase">
+                  Ver opciones -></div>
+              </div>
+            </div>
+
           </div>
         </div>
 
-        <div class="relative group">
-          <div class="absolute -inset-1 bg-gradient-to-r from-thor-gold to-thor-cyan rounded-3xl blur opacity-30 group-hover:opacity-60 transition duration-1000"></div>
-          <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
-            <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80" alt="Familia feliz" class="w-full h-auto object-cover transform group-hover:scale-105 transition duration-700" />
+        <div class="lg:col-span-5 flex flex-col gap-6 h-full justify-center mt-10 lg:mt-0">
+
+          <div class="carousel-container h-56 shadow-xl border-4 border-white bg-gray-200" id="carousel-1">
+            <div class="carousel-track">
+              <div class="carousel-slide"><img src="/imagen/calentador.jpg" alt="Instalación 1">
+                <div class="absolute bottom-0 w-full bg-black/60 text-white text-xs p-2 text-center font-bold">
+                  INSTALACIONES REALES</div>
+              </div>
+              <div class="carousel-slide"><img src="/imagen/calentador_agua.jpeg" alt="Instalación 2">
+                <div class="absolute bottom-0 w-full bg-black/60 text-white text-xs p-2 text-center font-bold">CALIDAD
+                  CERTIFICADA</div>
+              </div>
+              <div class="carousel-slide"><img src="/imagen/deposito_agua.jpeg" alt="Instalación 2">
+                <div class="absolute bottom-0 w-full bg-black/60 text-white text-xs p-2 text-center font-bold">CALIDAD
+                  CERTIFICADA</div>
+              </div>
+            </div>
+            <button
+              class="prev-btn absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white p-1 rounded-full"><svg
+                class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+              </svg></button>
+            <button
+              class="next-btn absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white p-1 rounded-full"><svg
+                class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg></button>
           </div>
+
+          <div class="carousel-container h-56 shadow-xl border-4 border-white bg-gray-200" id="carousel-2">
+            <div class="carousel-track">
+              <div class="carousel-slide"><img src="/imagen/calentador_solar.jpeg" alt="Tech 1">
+                <div class="absolute bottom-0 w-full bg-thor-blue/80 text-white text-xs p-2 text-center font-bold">
+                  TECNOLOGÍA DE PUNTA</div>
+              </div>
+              <div class="carousel-slide"><img src="/imagen/calentador_solar2.jpeg" alt="Tech 2">
+                <div class="absolute bottom-0 w-full bg-thor-blue/80 text-white text-xs p-2 text-center font-bold">
+                  INVERSORES EFICIENTES</div>
+              </div>
+              <div class="carousel-slide"><img src="/imagen/deposito_agua2.jpeg" alt="Tech 2">
+                <div class="absolute bottom-0 w-full bg-thor-blue/80 text-white text-xs p-2 text-center font-bold">
+                  INVERSORES EFICIENTES</div>
+              </div>
+            </div>
+            <button
+              class="prev-btn absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white p-1 rounded-full"><svg
+                class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+              </svg></button>
+            <button
+              class="next-btn absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white p-1 rounded-full"><svg
+                class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg></button>
+          </div>
+
+          <div class="carousel-container h-56 shadow-xl border-4 border-white bg-gray-200" id="carousel-3">
+            <div class="carousel-track">
+              <div class="carousel-slide"><img src="/imagen/celda.jpeg" alt="Lifestyle 1">
+                <div class="absolute bottom-0 w-full bg-thor-gold/90 text-thor-dark text-xs p-2 text-center font-bold">
+                  AHORRA PARA LO QUE IMPORTA</div>
+              </div>
+              <div class="carousel-slide"><img src="/imagen/celdasolar.jpeg" alt="Lifestyle 2">
+                <div class="absolute bottom-0 w-full bg-thor-gold/90 text-thor-dark text-xs p-2 text-center font-bold">
+                  DISFRUTA TU HOGAR</div>
+              </div>
+            </div>
+            <button
+              class="prev-btn absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white p-1 rounded-full"><svg
+                class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+              </svg></button>
+            <button
+              class="next-btn absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white p-1 rounded-full"><svg
+                class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg></button>
+          </div>
+
         </div>
       </div>
     </section>
@@ -231,284 +463,296 @@
 
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="text-center mb-10">
-          <h2 class="text-3xl md:text-5xl font-display font-black text-white mb-4">Calculadora de <span class="text-thor-gold">Ahorro</span></h2>
+          <h2 class="text-3xl md:text-5xl font-display font-black text-white mb-4">Calculadora de <span
+              class="text-thor-gold">Ahorro</span></h2>
           <p class="text-gray-400 text-lg">Simula tu inversión y descubre en cuánto tiempo se paga sola.</p>
         </div>
 
         <div class="flex justify-center mb-10 gap-2 md:gap-4 flex-wrap">
-            <button onclick="switchTab('heaters')" id="tab-heaters" class="calc-tab active font-bold py-2 px-6 text-white uppercase text-sm tracking-wider">Calentadores</button>
-            <button onclick="switchTab('panels')" id="tab-panels" class="calc-tab font-bold py-2 px-6 text-white uppercase text-sm tracking-wider">Paneles CFE</button>
-            <button onclick="switchTab('lights')" id="tab-lights" class="calc-tab font-bold py-2 px-6 text-white uppercase text-sm tracking-wider">Luminarias</button>
+          <button onclick="switchTab('heaters')" id="tab-heaters"
+            class="calc-tab active font-bold py-2 px-6 text-white uppercase text-sm tracking-wider">Calentadores</button>
+          <button onclick="switchTab('panels')" id="tab-panels"
+            class="calc-tab font-bold py-2 px-6 text-white uppercase text-sm tracking-wider">Paneles CFE</button>
+          <button onclick="switchTab('lights')" id="tab-lights"
+            class="calc-tab font-bold py-2 px-6 text-white uppercase text-sm tracking-wider">Luminarias</button>
         </div>
 
         <div class="grid lg:grid-cols-12 gap-8 items-stretch">
-          
-          <div class="lg:col-span-5 bg-thor-card/80 backdrop-blur-xl border border-white/10 rounded-3xl p-8 flex flex-col justify-between h-full">
-            
-            <div id="calc-heaters" class="calc-content block animation-fade">
-                <div class="mb-10">
-                  <label class="block text-gray-300 font-bold mb-4 text-lg">¿Cuánto gastas de Gas al mes?</label>
-                  <div class="flex items-center gap-4 mb-4">
-                    <span class="text-3xl text-thor-gold font-black">$</span>
-                    <input type="number" id="gasInput" value="800" min="0" step="50" class="w-full bg-transparent border-b-2 border-gray-600 text-4xl text-white font-bold focus:outline-none focus:border-thor-gold transition p-2" oninput="calculateHeaters()" />
-                  </div>
-                  <input type="range" id="gasRange" min="200" max="5000" step="50" value="800" class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-thor-gold" oninput="document.getElementById('gasInput').value=this.value; calculateHeaters();" />
-                  <p class="text-xs text-gray-500 mt-2">Desliza para ajustar tu gasto.</p>
-                </div>
 
-                <div class="mb-8">
-                  <label class="block text-gray-300 font-bold mb-4 text-lg">¿Cuántas personas viven en casa?</label>
-                  <div class="grid grid-cols-3 gap-3">
-                    <button onclick="setPeople(3)" class="people-btn active flex flex-col items-center justify-center p-3 rounded-xl border border-thor-gold bg-thor-gold/10 text-white transition hover:bg-thor-gold/20" data-val="3">
-                        <span class="font-black text-xl mb-1">1 - 4</span>
-                        <span class="text-[10px] uppercase tracking-wide text-gray-300">Gravedad 150L</span>
-                        <span class="text-xs font-bold text-thor-gold">$8,000</span>
-                    </button>
-                    <button onclick="setPeople(6)" class="people-btn flex flex-col items-center justify-center p-3 rounded-xl border border-gray-600 bg-transparent text-gray-400 transition hover:border-gray-400" data-val="6">
-                        <span class="font-black text-xl mb-1">5 - 7</span>
-                        <span class="text-[10px] uppercase tracking-wide text-gray-500">Presurizado 200L</span>
-                        <span class="text-xs font-bold">$12,000</span>
-                    </button>
-                    <button onclick="setPeople(9)" class="people-btn flex flex-col items-center justify-center p-3 rounded-xl border border-gray-600 bg-transparent text-gray-400 transition hover:border-gray-400" data-val="9">
-                        <span class="font-black text-xl mb-1">8+</span>
-                        <span class="text-[10px] uppercase tracking-wide text-gray-500">Industrial 300L</span>
-                        <span class="text-xs font-bold">$18,000</span>
-                    </button>
-                  </div>
+          <div
+            class="lg:col-span-5 bg-thor-card/80 backdrop-blur-xl border border-white/10 rounded-3xl p-8 flex flex-col justify-between h-full">
+
+            <div id="calc-heaters" class="calc-content block animation-fade">
+              <div class="mb-10">
+                <label class="block text-gray-300 font-bold mb-4 text-lg">¿Cuánto gastas de Gas al mes?</label>
+                <div class="flex items-center gap-4 mb-4">
+                  <span class="text-3xl text-thor-gold font-black">$</span>
+                  <input type="number" id="gasInput" value="800" min="0" step="50"
+                    class="w-full bg-transparent border-b-2 border-gray-600 text-4xl text-white font-bold focus:outline-none focus:border-thor-gold transition p-2"
+                    oninput="calculateHeaters()" />
                 </div>
+                <input type="range" id="gasRange" min="200" max="5000" step="50" value="800"
+                  class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-thor-gold"
+                  oninput="document.getElementById('gasInput').value=this.value; calculateHeaters();" />
+                <p class="text-xs text-gray-500 mt-2">Desliza para ajustar tu gasto.</p>
+              </div>
+
+              <div class="mb-8">
+                <label class="block text-gray-300 font-bold mb-4 text-lg">¿Cuántas personas viven en casa?</label>
+                <div class="grid grid-cols-3 gap-3">
+                  <button onclick="setPeople(3)"
+                    class="people-btn active flex flex-col items-center justify-center p-3 rounded-xl border border-thor-gold bg-thor-gold/10 text-white transition hover:bg-thor-gold/20"
+                    data-val="3">
+                    <span class="font-black text-xl mb-1">1 - 4</span>
+                    <span class="text-[10px] uppercase tracking-wide text-gray-300">Gravedad 150L</span>
+                    <span class="text-xs font-bold text-thor-gold">$8,000</span>
+                  </button>
+                  <button onclick="setPeople(6)"
+                    class="people-btn flex flex-col items-center justify-center p-3 rounded-xl border border-gray-600 bg-transparent text-gray-400 transition hover:border-gray-400"
+                    data-val="6">
+                    <span class="font-black text-xl mb-1">5 - 7</span>
+                    <span class="text-[10px] uppercase tracking-wide text-gray-500">Presurizado 200L</span>
+                    <span class="text-xs font-bold">$12,000</span>
+                  </button>
+                  <button onclick="setPeople(9)"
+                    class="people-btn flex flex-col items-center justify-center p-3 rounded-xl border border-gray-600 bg-transparent text-gray-400 transition hover:border-gray-400"
+                    data-val="9">
+                    <span class="font-black text-xl mb-1">8+</span>
+                    <span class="text-[10px] uppercase tracking-wide text-gray-500">Industrial 300L</span>
+                    <span class="text-xs font-bold">$18,000</span>
+                  </button>
+                </div>
+              </div>
             </div>
 
             <div id="calc-panels" class="calc-content hidden animation-fade">
-                <div class="mb-10">
-                  <label class="block text-gray-300 font-bold mb-4 text-lg">Recibo de Luz (Bimestral)</label>
-                  <div class="flex items-center gap-4 mb-4">
-                    <span class="text-3xl text-thor-cyan font-black">$</span>
-                    <input type="number" id="billInput" value="2500" min="500" step="100" class="w-full bg-transparent border-b-2 border-gray-600 text-4xl text-white font-bold focus:outline-none focus:border-thor-cyan transition p-2" oninput="calculatePanels()" />
-                  </div>
-                  <input type="range" id="billRange" min="500" max="10000" step="100" value="2500" class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-thor-cyan" oninput="document.getElementById('billInput').value=this.value; calculatePanels();" />
+              <div class="mb-10">
+                <label class="block text-gray-300 font-bold mb-4 text-lg">Recibo de Luz (Bimestral)</label>
+                <div class="flex items-center gap-4 mb-4">
+                  <span class="text-3xl text-thor-cyan font-black">$</span>
+                  <input type="number" id="billInput" value="2500" min="500" step="100"
+                    class="w-full bg-transparent border-b-2 border-gray-600 text-4xl text-white font-bold focus:outline-none focus:border-thor-cyan transition p-2"
+                    oninput="calculatePanels()" />
                 </div>
-                <div class="p-4 bg-thor-cyan/10 rounded-xl border border-thor-cyan/30">
-                    <p class="text-thor-cyan text-sm font-bold uppercase mb-1">Sistema Sugerido</p>
-                    <p id="panelSystemLabel" class="text-2xl font-bold text-white">Kit 4 Paneles</p>
-                    <p id="panelPriceLabel" class="text-sm text-gray-400 mt-1">Inversión aprox: $45,000</p>
-                </div>
+                <input type="range" id="billRange" min="500" max="10000" step="100" value="2500"
+                  class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-thor-cyan"
+                  oninput="document.getElementById('billInput').value=this.value; calculatePanels();" />
+              </div>
+              <div class="p-4 bg-thor-cyan/10 rounded-xl border border-thor-cyan/30">
+                <p class="text-thor-cyan text-sm font-bold uppercase mb-1">Sistema Sugerido</p>
+                <p id="panelSystemLabel" class="text-2xl font-bold text-white">Kit 4 Paneles</p>
+                <p id="panelPriceLabel" class="text-sm text-gray-400 mt-1">Inversión aprox: $45,000</p>
+              </div>
             </div>
 
             <div id="calc-lights" class="calc-content hidden animation-fade">
-                <div class="mb-8">
-                  <label class="block text-gray-300 font-bold mb-4 text-lg">Cantidad de Lámparas</label>
-                  <div class="flex items-center gap-4 mb-4">
-                    <span class="text-3xl text-white font-black">#</span>
-                    <input type="number" id="lampInput" value="10" min="1" step="1" class="w-full bg-transparent border-b-2 border-gray-600 text-4xl text-white font-bold focus:outline-none focus:border-white transition p-2" oninput="calculateLights()" />
-                  </div>
-                  <input type="range" id="lampRange" min="1" max="100" step="1" value="10" class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-white" oninput="document.getElementById('lampInput').value=this.value; calculateLights();" />
+              <div class="mb-8">
+                <label class="block text-gray-300 font-bold mb-4 text-lg">Cantidad de Lámparas</label>
+                <div class="flex items-center gap-4 mb-4">
+                  <span class="text-3xl text-white font-black">#</span>
+                  <input type="number" id="lampInput" value="10" min="1" step="1"
+                    class="w-full bg-transparent border-b-2 border-gray-600 text-4xl text-white font-bold focus:outline-none focus:border-white transition p-2"
+                    oninput="calculateLights()" />
                 </div>
-                <div class="mb-4">
-                     <label class="block text-gray-400 text-sm font-bold mb-2 uppercase">Reemplazando a:</label>
-                      <select id="wattsInput" onchange="calculateLights()" class="w-full bg-gray-800 text-white p-4 rounded-xl border border-gray-600 focus:border-white outline-none font-bold">
-                          <option value="60">Foco Incandescente (60W)</option>
-                          <option value="150" selected>Suburbana Vieja (150W)</option>
-                          <option value="400">Reflector Halógeno (400W)</option>
-                      </select>
-                </div>
+                <input type="range" id="lampRange" min="1" max="100" step="1" value="10"
+                  class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-white"
+                  oninput="document.getElementById('lampInput').value=this.value; calculateLights();" />
+              </div>
+              <div class="mb-4">
+                <label class="block text-gray-400 text-sm font-bold mb-2 uppercase">Reemplazando a:</label>
+                <select id="wattsInput" onchange="calculateLights()"
+                  class="w-full bg-gray-800 text-white p-4 rounded-xl border border-gray-600 focus:border-white outline-none font-bold">
+                  <option value="60">Foco Incandescente (60W)</option>
+                  <option value="150" selected>Suburbana Vieja (150W)</option>
+                  <option value="400">Reflector Halógeno (400W)</option>
+                </select>
+              </div>
             </div>
 
             <div class="mt-auto bg-blue-600/20 p-4 rounded-xl border border-blue-500/30 flex items-center gap-4">
-               <div class="bg-blue-500 rounded-full p-2 text-white">
-                   <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-               </div>
-               <div>
-                   <p class="text-blue-300 text-xs font-bold uppercase tracking-wider">Modelo Recomendado</p>
-                   <p id="recLabel" class="text-lg font-bold text-white">Gravedad 150L</p>
-               </div>
+              <div class="bg-blue-500 rounded-full p-2 text-white">
+                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <div>
+                <p class="text-blue-300 text-xs font-bold uppercase tracking-wider">Modelo Recomendado</p>
+                <p id="recLabel" class="text-lg font-bold text-white">Gravedad 150L</p>
+              </div>
             </div>
 
           </div>
 
           <div class="lg:col-span-7 flex flex-col gap-6">
-              
-              <div class="bg-thor-card border border-white/5 rounded-3xl p-8 text-center relative overflow-hidden">
-                  <div class="absolute top-0 right-0 w-32 h-32 bg-thor-gold/10 rounded-full blur-2xl"></div>
-                  
-                  <h3 class="text-gray-400 uppercase tracking-widest text-xs font-bold mb-8">Tu Ahorro Estimado (80%)</h3>
-                  
-                  <div class="grid grid-cols-2 gap-8 mb-8">
-                      <div>
-                          <p class="text-gray-400 text-sm mb-1">Ahorro Mensual</p>
-                          <p id="resultValue1" class="text-3xl md:text-4xl font-black text-white">$640</p>
-                      </div>
-                      <div>
-                          <p class="text-gray-400 text-sm mb-1">Ahorro Anual</p>
-                          <p id="resultValue2" class="text-3xl md:text-4xl font-black text-thor-gold">$7,680</p>
-                      </div>
-                  </div>
 
-                  <div class="border-t border-white/10 pt-6">
-                      <p class="text-gray-400 text-sm mb-2">En 5 años habrás ahorrado:</p>
-                      <p id="resultValue3" class="text-4xl md:text-5xl font-black text-thor-blue">$38,400 MXN</p>
-                  </div>
+            <div class="bg-thor-card border border-white/5 rounded-3xl p-8 text-center relative overflow-hidden">
+              <div class="absolute top-0 right-0 w-32 h-32 bg-thor-gold/10 rounded-full blur-2xl"></div>
+
+              <h3 class="text-gray-400 uppercase tracking-widest text-xs font-bold mb-8">Tu Ahorro Estimado (80%)</h3>
+
+              <div class="grid grid-cols-2 gap-8 mb-8">
+                <div>
+                  <p class="text-gray-400 text-sm mb-1">Ahorro Mensual</p>
+                  <p id="resultValue1" class="text-3xl md:text-4xl font-black text-white">$640</p>
+                </div>
+                <div>
+                  <p class="text-gray-400 text-sm mb-1">Ahorro Anual</p>
+                  <p id="resultValue2" class="text-3xl md:text-4xl font-black text-thor-gold">$7,680</p>
+                </div>
               </div>
 
-              <div class="grid md:grid-cols-2 gap-6 flex-grow">
-                  <div class="bg-thor-card border border-white/5 rounded-3xl p-6 flex flex-col justify-center">
-                      <p class="text-gray-300 font-bold mb-1">¿En cuánto recupero mi inversión?</p>
-                      <p class="text-xs text-gray-500 mb-4">Retorno de Inversión (ROI) estimado:</p>
-                      <p id="roiValue" class="text-3xl font-black text-white">12 Meses</p>
-                      <div class="w-full bg-gray-700 h-2 rounded-full mt-4 overflow-hidden">
-                          <div class="bg-green-500 h-full w-3/4"></div>
-                      </div>
-                  </div>
+              <div class="border-t border-white/10 pt-6">
+                <p class="text-gray-400 text-sm mb-2">En 5 años habrás ahorrado:</p>
+                <p id="resultValue3" class="text-4xl md:text-5xl font-black text-thor-blue">$38,400 MXN</p>
+              </div>
+            </div>
 
-                  <div class="bg-thor-card border border-white/5 rounded-3xl p-6 flex flex-col justify-center">
-                      <p class="text-gray-300 font-bold mb-1">Impacto Ambiental</p>
-                      <p class="text-xs text-gray-500 mb-4">Tu ahorro equivale a:</p>
-                      <ul class="space-y-3">
-                          <li class="flex items-center gap-3">
-                              <span class="text-green-500 text-xl">🌳</span>
-                              <span id="treeValue" class="text-white font-bold">12 Árboles al año</span>
-                          </li>
-                          <li class="flex items-center gap-3">
-                              <span class="text-gray-400 text-xl">☁️</span>
-                              <span id="co2Value" class="text-white font-bold">1.2 Tons CO2</span>
-                          </li>
-                      </ul>
-                  </div>
+            <div class="grid md:grid-cols-2 gap-6 flex-grow">
+              <div class="bg-thor-card border border-white/5 rounded-3xl p-6 flex flex-col justify-center">
+                <p class="text-gray-300 font-bold mb-1">¿En cuánto recupero mi inversión?</p>
+                <p class="text-xs text-gray-500 mb-4">Retorno de Inversión (ROI) estimado:</p>
+                <p id="roiValue" class="text-3xl font-black text-white">12 Meses</p>
+                <div class="w-full bg-gray-700 h-2 rounded-full mt-4 overflow-hidden">
+                  <div class="bg-green-500 h-full w-3/4"></div>
+                </div>
               </div>
 
-              <a href="https://wa.me/525584122228?text=Hola,%20hice%20el%20cálculo%20y%20quiero%20empezar%20a%20ahorrar." target="_blank" class="w-full py-5 bg-green-600 hover:bg-green-500 text-white font-black text-xl rounded-2xl shadow-lg hover:shadow-green-500/20 transition transform hover:-translate-y-1 text-center">
-                  ¡Quiero este Ahorro!
-              </a>
+              <div class="bg-thor-card border border-white/5 rounded-3xl p-6 flex flex-col justify-center">
+                <p class="text-gray-300 font-bold mb-1">Impacto Ambiental</p>
+                <p class="text-xs text-gray-500 mb-4">Tu ahorro equivale a:</p>
+                <ul class="space-y-3">
+                  <li class="flex items-center gap-3">
+                    <span class="text-green-500 text-xl">🌳</span>
+                    <span id="treeValue" class="text-white font-bold">12 Árboles al año</span>
+                  </li>
+                  <li class="flex items-center gap-3">
+                    <span class="text-gray-400 text-xl">☁️</span>
+                    <span id="co2Value" class="text-white font-bold">1.2 Tons CO2</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <a href="https://wa.me/525584122228?text=Hola,%20hice%20el%20cálculo%20y%20quiero%20empezar%20a%20ahorrar."
+              target="_blank"
+              class="w-full py-5 bg-green-600 hover:bg-green-500 text-white font-black text-xl rounded-2xl shadow-lg hover:shadow-green-500/20 transition transform hover:-translate-y-1 text-center">
+              ¡Quiero este Ahorro!
+            </a>
 
           </div>
         </div>
       </div>
     </section>
 
-    <section class="py-16 bg-white border-b border-gray-100">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-10">
-          <h2 class="text-2xl sm:text-3xl font-display font-bold text-thor-dark uppercase tracking-wide">
-            Calidad Certificada
-          </h2>
-          <div class="w-16 h-1 bg-thor-gold mx-auto mt-2 rounded-full"></div>
-          <p class="mt-3 text-gray-500">Cumplimos con las normas más estrictas de eficiencia y seguridad.</p>
-        </div>
-
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center opacity-80 grayscale hover:grayscale-0 transition-all duration-500">
-          <div class="flex flex-col items-center gap-2 group cursor-pointer">
-             <img src="https://imgs.search.brave.com/16hguVGRxg-NDxa1jZqKIjDCFtsyECATnGLqRSljt28/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMuc2Vla2xvZ28u/Y29tL2xvZ28tcG5n/LzEwLzIvbm9tLWxv/Z28tcG5nX3NlZWts/b2dvLTEwMDM4Ny5w/bmc" alt="Certificación NOM" class="h-16 object-contain group-hover:scale-110 transition duration-300">
-             <span class="text-xs font-bold text-gray-400 group-hover:text-thor-blue">NOM-003</span>
-          </div>
-           <div class="flex flex-col items-center gap-2 group cursor-pointer">
-             <img src="https://imgs.search.brave.com/IXZIUsZ-1tJseeq4gWNx-ovrk6gkceNpZRaRhdkwGpE/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9zZWVr/bG9nby5jb20vaW1h/Z2VzL0cvZ2FyYW50/aWEtZmlkZS1jZmUt/bG9nby1BRTJDMTU5/NzhBLXNlZWtsb2dv/LmNvbS5wbmc" class="h-16 object-contain group-hover:scale-110 transition duration-300">
-             <span class="text-xs font-bold text-gray-400 group-hover:text-thor-blue">Sello FIDE</span>
-          </div>
-          <div class="flex flex-col items-center gap-2 group cursor-pointer">
-             <img src="https://imgs.search.brave.com/NMGerIRAZzVXUegRSksvb3GTL0GmHAh5VS7kQWKa4WM/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMuc2Vla2xvZ28u/Y29tL2xvZ28tcG5n/LzM3LzIvaXNvLTkw/MDEtcW1zLWxvZ28t/cG5nX3NlZWtsb2dv/LTM3NzAzMC5wbmc" alt="ISO 9001" class="h-16 object-contain group-hover:scale-110 transition duration-300">
-             <span class="text-xs font-bold text-gray-400 group-hover:text-green-600">ISO 9001</span>
-          </div>
-          <div class="flex flex-col items-center gap-2 group cursor-pointer">
-             <img src="https://imgs.search.brave.com/RhdOsmSDcvlc5uCcZwoiQQgXGwFRUS7bZaq4U2pdRHk/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9zdGF0/aWMudmVjdGVlenku/Y29tL3N5c3RlbS9y/ZXNvdXJjZXMvdGh1/bWJuYWlscy8wMjAv/MDQwLzcyMC9zbWFs/bC9jaGFyZ2UtZW5l/cmd5LWxvZ28taWNv/bi10ZW1wbGF0ZS1m/cmVlLXZlY3Rvci5q/cGc" alt="ISO 9001" class="h-16 object-contain group-hover:scale-110 transition duration-300">
-             <span class="text-xs font-bold text-gray-400 group-hover:text-thor-blue">ISO 9001</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="py-12 bg-thor-dark overflow-hidden relative">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6 text-center">
-        <p class="text-gray-400 text-sm font-bold uppercase tracking-[0.2em]">Trabajamos con los mejores</p>
-      </div>
-
-      <div class="mask-fade w-full inline-flex flex-nowrap overflow-hidden">
-        <div class="animate-scroll items-center">
-          <ul class="flex items-center justify-center md:justify-start [&_li]:mx-8 [&_img]:max-w-none">
-            <li><img src="https://imgs.search.brave.com/XTkDFvX-dnxXCor1Fjrf69jRGKTOEOCa98sYg56L8rc/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly90aHVt/YnMuZHJlYW1zdGlt/ZS5jb20vYi92ZWN0/b3ItZGUtbG9nb3Rp/cG8tZW5lcmclQzMl/QURhLXNvbGFyLXBh/bmVsZXMtc29sYXJl/cy0xODQ4ODAwNjku/anBn" class="h-10 opacity-60 hover:opacity-100 transition duration-300" alt="Marca 1" /></li>
-            <li><img src="https://imgs.search.brave.com/bZWa4Ty7NswHiUhc-ojXkb9psBZoFurEpeHxeCGhMwo/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9zdGF0/aWMudmVjdGVlenku/Y29tL3N5c3RlbS9y/ZXNvdXJjZXMvdGh1/bWJuYWlscy8wMTAv/MzY3LzcwOS9zbWFs/bC9zb2xhci1lbmVy/Z3ktbG9nby13aXRo/LWEtY29tYmluYXRp/b24tb2Ytc3VuLWFu/ZC1zb2xhci1wYW5l/bHMtYXMtdGhlLWlj/b24tdmVjdG9yLmpw/Zw" class="h-10 opacity-60 hover:opacity-100 transition duration-300" alt="Marca 2" /></li>
-            <li><img src="https://imgs.search.brave.com/367kdFWgURWAAW93i7hgAzuEGJJ44Puvj73cmqL0jcM/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly90aHVt/YnMuZHJlYW1zdGlt/ZS5jb20vYi9pbnNp/Z25pYS1kZS1zdW4t/Y29uLWxvcy1wYW5l/bGVzLXNvbGFyZXMt/MjUzOTIyMzIuanBn" class="h-10 opacity-60 hover:opacity-100 transition duration-300" alt="Marca 3" /></li>
-            <li><img src="https://imgs.search.brave.com/XTkDFvX-dnxXCor1Fjrf69jRGKTOEOCa98sYg56L8rc/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly90aHVt/YnMuZHJlYW1zdGlt/ZS5jb20vYi92ZWN0/b3ItZGUtbG9nb3Rp/cG8tZW5lcmclQzMl/QURhLXNvbGFyLXBh/bmVsZXMtc29sYXJl/cy0xODQ4ODAwNjku/anBn" class="h-10 opacity-60 hover:opacity-100 transition duration-300" alt="Marca 4" /></li>
-            <li><img src="https://via.placeholder.com/120x50/1e3a8a/ffffff?text=Enphase" class="h-10 opacity-60 hover:opacity-100 transition duration-300" alt="Marca 5" /></li>
-            <li><img src="https://via.placeholder.com/120x50/1e3a8a/ffffff?text=Longi" class="h-10 opacity-60 hover:opacity-100 transition duration-300" alt="Marca 6" /></li>
-          </ul>
-          <ul class="flex items-center justify-center md:justify-start [&_li]:mx-8 [&_img]:max-w-none">
-            <li><img src="https://imgs.search.brave.com/XTkDFvX-dnxXCor1Fjrf69jRGKTOEOCa98sYg56L8rc/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly90aHVt/YnMuZHJlYW1zdGlt/ZS5jb20vYi92ZWN0/b3ItZGUtbG9nb3Rp/cG8tZW5lcmclQzMl/QURhLXNvbGFyLXBh/bmVsZXMtc29sYXJl/cy0xODQ4ODAwNjku/anBn" class="h-10 opacity-60 hover:opacity-100 transition duration-300" alt="Marca 1" /></li>
-            <li><img src="https://imgs.search.brave.com/bZWa4Ty7NswHiUhc-ojXkb9psBZoFurEpeHxeCGhMwo/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9zdGF0/aWMudmVjdGVlenku/Y29tL3N5c3RlbS9y/ZXNvdXJjZXMvdGh1/bWJuYWlscy8wMTAv/MzY3LzcwOS9zbWFs/bC9zb2xhci1lbmVy/Z3ktbG9nby13aXRo/LWEtY29tYmluYXRp/b24tb2Ytc3VuLWFu/ZC1zb2xhci1wYW5l/bHMtYXMtdGhlLWlj/b24tdmVjdG9yLmpw/Zw" class="h-10 opacity-60 hover:opacity-100 transition duration-300" alt="Marca 2" /></li>
-            <li><img src="https://imgs.search.brave.com/367kdFWgURWAAW93i7hgAzuEGJJ44Puvj73cmqL0jcM/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly90aHVt/YnMuZHJlYW1zdGlt/ZS5jb20vYi9pbnNp/Z25pYS1kZS1zdW4t/Y29uLWxvcy1wYW5l/bGVzLXNvbGFyZXMt/MjUzOTIyMzIuanBn" class="h-10 opacity-60 hover:opacity-100 transition duration-300" alt="Marca 3" /></li>
-            <li><img src="https://imgs.search.brave.com/XTkDFvX-dnxXCor1Fjrf69jRGKTOEOCa98sYg56L8rc/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly90aHVt/YnMuZHJlYW1zdGlt/ZS5jb20vYi92ZWN0/b3ItZGUtbG9nb3Rp/cG8tZW5lcmclQzMl/QURhLXNvbGFyLXBh/bmVsZXMtc29sYXJl/cy0xODQ4ODAwNjku/anBn" class="h-10 opacity-60 hover:opacity-100 transition duration-300" alt="Marca 4" /></li>
-            <li><img src="https://via.placeholder.com/120x50/1e3a8a/ffffff?text=Enphase" class="h-10 opacity-60 hover:opacity-100 transition duration-300" alt="Marca 5" /></li>
-            <li><img src="https://via.placeholder.com/120x50/1e3a8a/ffffff?text=Longi" class="h-10 opacity-60 hover:opacity-100 transition duration-300" alt="Marca 6" /></li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <footer class="bg-thor-dark text-white pt-12 pb-6 border-t border-gray-800">
+    <footer class="bg-gray-50 text-black pt-12 pb-6 border-t border-gray-800">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
         <div class="mb-4 flex items-center">
-          <span class="text-3xl font-display font-black tracking-widest">THOR<span class="text-thor-gold">SOLAR</span></span>
+          <span class="text-3xl font-display font-black tracking-widest">THOR<span
+              class="text-thor-gold">SOLAR</span></span>
         </div>
-        <p class="text-gray-500 text-sm text-center">&copy; 2025 ThorSolar. Todos los derechos reservados.</p>
+        <p class="text-gray-500 text-sm text-center">&copy; 2026 ThorSolar. Todos los derechos reservados.</p>
       </div>
     </footer>
   </main>
 
   <script>
-    // Navbar y Menu
+    // --- NAVBAR STICKY ---
     const navbar = document.querySelector("nav");
     window.addEventListener("scroll", () => {
-      if (window.scrollY > 20) { navbar.classList.add("scrolled"); navbar.classList.remove("py-4"); } 
-      else { navbar.classList.remove("scrolled"); navbar.classList.add("py-4"); }
+      if (window.scrollY > 20) {
+        navbar.classList.add("bg-thor-dark/95", "backdrop-blur-md", "shadow-xl");
+      } else {
+        navbar.classList.remove("bg-thor-dark/95", "backdrop-blur-md", "shadow-xl");
+      }
     });
-    const menuButton = document.getElementById("menu-button");
-    const mobileMenu = document.getElementById("mobile-menu");
-    menuButton.addEventListener("click", () => mobileMenu.classList.toggle("hidden"));
 
-    // --- LÓGICA CALCULADORA MEJORADA ---
+    // --- MENU MOVIL ---
+    const menuButton = document.getElementById('menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+    // --- LOGICA DE MULTIPLES CARRUSELES ---
+    // Seleccionamos todos los contenedores de carrusel
+    const carousels = document.querySelectorAll('.carousel-container');
+
+    carousels.forEach((container) => {
+      const track = container.querySelector('.carousel-track');
+      const slides = Array.from(track.children);
+      const nextBtn = container.querySelector('.next-btn');
+      const prevBtn = container.querySelector('.prev-btn');
+      let currentIndex = 0;
+
+      const updateSlide = () => {
+        track.style.transform = 'translateX(-' + (currentIndex * 100) + '%)';
+      }
+
+      // Eventos Click
+      nextBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % slides.length;
+        updateSlide();
+      });
+
+      prevBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+        updateSlide();
+      });
+
+      // Auto-play individual para cada carrusel con tiempos ligeramente distintos para que no se muevan al unisono
+      let intervalTime = 4000 + Math.random() * 2000; // Entre 4 y 6 segundos aleatorio
+
+      let autoPlay = setInterval(() => {
+        currentIndex = (currentIndex + 1) % slides.length;
+        updateSlide();
+      }, intervalTime);
+
+      // Pausar al pasar el mouse
+      container.addEventListener('mouseenter', () => clearInterval(autoPlay));
+      container.addEventListener('mouseleave', () => {
+        autoPlay = setInterval(() => {
+          currentIndex = (currentIndex + 1) % slides.length;
+          updateSlide();
+        }, intervalTime);
+      });
+    });
+
+    // --- CALCULADORA (Igual que antes) ---
     const formatter = new Intl.NumberFormat("es-MX", { style: "currency", currency: "MXN", minimumFractionDigits: 0 });
     let currentMode = 'heaters';
     let currentPeople = 3;
-    let currentProductPrice = 8000; // Valor inicial
+    let currentProductPrice = 8000;
 
     function switchTab(mode) {
-        currentMode = mode;
-        document.querySelectorAll('.calc-tab').forEach(t => t.classList.remove('active'));
-        document.getElementById(`tab-${mode}`).classList.add('active');
-        document.querySelectorAll('.calc-content').forEach(c => c.classList.add('hidden'));
-        document.getElementById(`calc-${mode}`).classList.remove('hidden');
+      currentMode = mode;
+      document.querySelectorAll('.calc-tab').forEach(t => t.classList.remove('active'));
+      document.getElementById(`tab-${mode}`).classList.add('active');
+      document.querySelectorAll('.calc-content').forEach(c => c.classList.add('hidden'));
+      document.getElementById(`calc-${mode}`).classList.remove('hidden');
 
-        if(mode === 'heaters') calculateHeaters();
-        if(mode === 'panels') calculatePanels();
-        if(mode === 'lights') calculateLights();
+      if (mode === 'heaters') calculateHeaters();
+      if (mode === 'panels') calculatePanels();
+      if (mode === 'lights') calculateLights();
     }
 
-    // Botones de selección de personas (Solo Calentadores)
     function setPeople(num) {
       currentPeople = num;
-      // Actualizar estilos de botones
       document.querySelectorAll(".people-btn").forEach((btn) => {
         btn.classList.remove("border-thor-gold", "bg-thor-gold/10", "text-white");
         btn.classList.add("border-gray-600", "bg-transparent", "text-gray-400");
-        
-        // Reset text colors inside button
         const spans = btn.querySelectorAll("span");
         spans[1].classList.remove("text-gray-300"); spans[1].classList.add("text-gray-500");
-        spans[2].classList.remove("text-thor-gold"); 
-        
+        spans[2].classList.remove("text-thor-gold");
+
         if (parseInt(btn.dataset.val) === num) {
           btn.classList.remove("border-gray-600", "bg-transparent", "text-gray-400");
           btn.classList.add("border-thor-gold", "bg-thor-gold/10", "text-white");
-          
-          // Highlight colors
           spans[1].classList.remove("text-gray-500"); spans[1].classList.add("text-gray-300");
           spans[2].classList.add("text-thor-gold");
         }
       });
-
-      // Definir precio del producto según selección
-      if(num === 3) currentProductPrice = 8000;
-      if(num === 6) currentProductPrice = 12000;
-      if(num === 9) currentProductPrice = 18000;
-
+      if (num === 3) currentProductPrice = 8000;
+      if (num === 6) currentProductPrice = 12000;
+      if (num === 9) currentProductPrice = 18000;
       calculateHeaters();
     }
 
@@ -517,110 +761,79 @@
       const monthlySave = gasSpend * 0.8;
       const yearlySave = monthlySave * 12;
       const fiveYearSave = yearlySave * 5;
-
-      // Calcular ROI (Meses)
       const roi = currentProductPrice / monthlySave;
       const roiText = roi < 1 ? "Inmediata" : `${Math.ceil(roi)} Meses`;
-
-      // Calcular Ambiente (Factor: 1 árbol absorbe 20kg CO2/año. Gas LP genera kg CO2)
-      // Aprox: $1000 gas = 100kg CO2. 
-      const co2Saved = (yearlySave / 1000) * 0.15; // Toneladas (factor aprox)
-      const trees = Math.ceil(co2Saved * 50); // Factor de árboles
-
+      const co2Saved = (yearlySave / 1000) * 0.15;
+      const trees = Math.ceil(co2Saved * 50);
       let model = "Gravedad 150L";
       if (currentPeople >= 5 && currentPeople <= 7) model = "Presurizado 200L";
       else if (currentPeople >= 8) model = "Industrial 300L";
-
       updateUI(monthlySave, yearlySave, fiveYearSave, model, roiText, trees, co2Saved.toFixed(1));
     }
 
     function calculatePanels() {
-        const billAmount = parseFloat(document.getElementById("billInput").value) || 0;
-        const bimonthlySave = billAmount * 0.95;
-        const monthlySave = bimonthlySave / 2;
-        const yearlySave = bimonthlySave * 6; 
-        const fiveYearSave = yearlySave * 5;
-
-        // Estimación de costo del sistema (aprox $12,000 por panel instalado)
-        let panels = Math.ceil(billAmount / 600); // Factor consumo
-        if(panels < 2) panels = 2;
-        
-        // --- LOGICA DE DESCUENTO POR VOLUMEN ---
-        let systemCost = panels * 11000; // Costo base
-        let discount = 0;
-        
-        if(panels >= 8) discount = 0.05;  // 5% descuento
-        if(panels >= 12) discount = 0.10; // 10% descuento
-        if(panels >= 20) discount = 0.15; // 15% descuento
-        
-        systemCost = systemCost * (1 - discount); // Aplicar descuento
-
-        let panelText = `Kit ${panels} Paneles`;
-        let priceText = `Inversión aprox: ${formatter.format(systemCost)}`;
-        if(discount > 0) priceText += ` (-${discount*100}%)`;
-
-        document.getElementById("panelSystemLabel").textContent = panelText;
-        document.getElementById("panelPriceLabel").textContent = priceText;
-
-        const roi = systemCost / monthlySave;
-        const roiText = `${Math.ceil(roi/12)} Años`; // ROI en paneles suele ser años
-
-        const co2Saved = (yearlySave / 1000) * 0.5; // Factor eléctrico es más alto
-        const trees = Math.ceil(co2Saved * 60);
-
-        updateUI(monthlySave, yearlySave, fiveYearSave, panelText, roiText, trees, co2Saved.toFixed(1));
+      const billAmount = parseFloat(document.getElementById("billInput").value) || 0;
+      const bimonthlySave = billAmount * 0.95;
+      const monthlySave = bimonthlySave / 2;
+      const yearlySave = bimonthlySave * 6;
+      const fiveYearSave = yearlySave * 5;
+      let panels = Math.ceil(billAmount / 600);
+      if (panels < 2) panels = 2;
+      let systemCost = panels * 11000;
+      let discount = 0;
+      if (panels >= 8) discount = 0.05;
+      if (panels >= 12) discount = 0.10;
+      if (panels >= 20) discount = 0.15;
+      systemCost = systemCost * (1 - discount);
+      let panelText = `Kit ${panels} Paneles`;
+      let priceText = `Inversión aprox: ${formatter.format(systemCost)}`;
+      if (discount > 0) priceText += ` (-${discount * 100}%)`;
+      document.getElementById("panelSystemLabel").textContent = panelText;
+      document.getElementById("panelPriceLabel").textContent = priceText;
+      const roi = systemCost / monthlySave;
+      const roiText = `${Math.ceil(roi / 12)} Años`;
+      const co2Saved = (yearlySave / 1000) * 0.5;
+      const trees = Math.ceil(co2Saved * 60);
+      updateUI(monthlySave, yearlySave, fiveYearSave, panelText, roiText, trees, co2Saved.toFixed(1));
     }
 
     function calculateLights() {
-        const qty = parseFloat(document.getElementById("lampInput").value) || 0;
-        const oldWatts = parseFloat(document.getElementById("wattsInput").value) || 150;
-        
-        // Costo kWh comercial aprox $4.00
-        const kWhPerYear = (oldWatts * 12 * 365) / 1000; 
-        const costPerYear = kWhPerYear * 4.0; 
-        
-        const totalYearlySave = costPerYear * qty;
-        const monthlySave = totalYearlySave / 12;
-        const fiveYearSave = totalYearlySave * 5;
-        
-        let model = "Suburbana 100W";
-        let unitPrice = 1200;
-        if(oldWatts > 100) { model = "Suburbana 200W"; unitPrice = 1800; }
-        if(oldWatts > 300) { model = "Reflector 300W"; unitPrice = 2500; }
-
-        // --- LOGICA DE DESCUENTO POR VOLUMEN ---
-        let discount = 0;
-        if(qty >= 10) discount = 0.05;
-        if(qty >= 20) discount = 0.10;
-        if(qty >= 50) discount = 0.15;
-
-        const finalUnitPrice = unitPrice * (1 - discount);
-        const totalInvestment = finalUnitPrice * qty;
-        
-        const roi = totalInvestment / monthlySave;
-        const roiText = `${Math.ceil(roi)} Meses`;
-
-        const co2Saved = (totalYearlySave / 1000) * 0.4;
-        const trees = Math.ceil(co2Saved * 40);
-
-        updateUI(monthlySave, totalYearlySave, fiveYearSave, model, roiText, trees, co2Saved.toFixed(1));
+      const qty = parseFloat(document.getElementById("lampInput").value) || 0;
+      const oldWatts = parseFloat(document.getElementById("wattsInput").value) || 150;
+      const kWhPerYear = (oldWatts * 12 * 365) / 1000;
+      const costPerYear = kWhPerYear * 4.0;
+      const totalYearlySave = costPerYear * qty;
+      const monthlySave = totalYearlySave / 12;
+      const fiveYearSave = totalYearlySave * 5;
+      let model = "Suburbana 100W";
+      let unitPrice = 1200;
+      if (oldWatts > 100) { model = "Suburbana 200W"; unitPrice = 1800; }
+      if (oldWatts > 300) { model = "Reflector 300W"; unitPrice = 2500; }
+      let discount = 0;
+      if (qty >= 10) discount = 0.05;
+      if (qty >= 20) discount = 0.10;
+      if (qty >= 50) discount = 0.15;
+      const finalUnitPrice = unitPrice * (1 - discount);
+      const totalInvestment = finalUnitPrice * qty;
+      const roi = totalInvestment / monthlySave;
+      const roiText = `${Math.ceil(roi)} Meses`;
+      const co2Saved = (totalYearlySave / 1000) * 0.4;
+      const trees = Math.ceil(co2Saved * 40);
+      updateUI(monthlySave, totalYearlySave, fiveYearSave, model, roiText, trees, co2Saved.toFixed(1));
     }
 
     function updateUI(val1, val2, val3, model, roi, trees, co2) {
-        document.getElementById("resultValue1").innerHTML = `${formatter.format(val1)}`;
-        document.getElementById("resultValue2").innerHTML = `${formatter.format(val2)}`;
-        document.getElementById("resultValue3").textContent = formatter.format(val3) + " MXN";
-        document.getElementById("recLabel").textContent = model;
-        
-        // Nuevos datos
-        document.getElementById("roiValue").textContent = roi;
-        document.getElementById("treeValue").textContent = `${trees} Árboles al año`;
-        document.getElementById("co2Value").textContent = `${co2} Tons CO2`;
+      document.getElementById("resultValue1").innerHTML = `${formatter.format(val1)}`;
+      document.getElementById("resultValue2").innerHTML = `${formatter.format(val2)}`;
+      document.getElementById("resultValue3").textContent = formatter.format(val3) + " MXN";
+      document.getElementById("recLabel").textContent = model;
+      document.getElementById("roiValue").textContent = roi;
+      document.getElementById("treeValue").textContent = `${trees} Árboles al año`;
+      document.getElementById("co2Value").textContent = `${co2} Tons CO2`;
     }
 
-    // Iniciar
     switchTab('heaters');
   </script>
 </body>
-</html>
 
+</html>
